@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-11-06T15:34:55Z</date>
+    <date>2013-11-06T16:31:18Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -22,6 +22,9 @@
                 </application>
                 <application>
                     <name>Misc</name>
+                </application>
+                <application>
+                    <name>Queue</name>
                 </application>
                 <application>
                     <name>Server</name>
@@ -578,6 +581,123 @@
                     <valuemap/>
                 </item>
                 <item>
+                    <name>Queue Total Messages</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>rabbitmq.queue.total.messages</key>
+                    <delay>0</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Queue</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Queue Total Messages Ready</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>rabbitmq.queue.total.messages_ready</key>
+                    <delay>0</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Queue</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Queue Total Messages Unacknowledged</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>rabbitmq.queue.total.messages_unacknowledged</key>
+                    <delay>0</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Queue</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
                     <name>RabbitMQ Version</name>
                     <type>2</type>
                     <snmp_community/>
@@ -858,6 +978,16 @@
         </template>
     </templates>
     <triggers>
+        <trigger>
+            <expression>{Template RabbitMQ:rabbitmq.queue.total.messages_unacknowledged.last(0)}&gt;10</expression>
+            <name>Message Unact Rate High</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
         <trigger>
             <expression>{Template RabbitMQ:rabbitmq.total.exchanges.nodata(300)}=1</expression>
             <name>No Data Received in 5 minutes</name>

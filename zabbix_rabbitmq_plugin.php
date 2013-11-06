@@ -100,6 +100,11 @@ if(!empty($output)){
 		write_to_data_file('total.connections', $data->object_totals->connections);
 		write_to_data_file('total.channels', $data->object_totals->channels);
 
+		// Queue Totals
+		write_to_data_file('queue.total.messages', $data->queue_totals->messages);
+		write_to_data_file('queue.total.messages_ready', $data->queue_totals->messages_ready);
+		write_to_data_file('queue.total.messages_unacknowledged', $data->queue_totals->messages_unacknowledged);
+
 		write_to_data_file('total.listeners', count($data->listeners));
 
 		// Send data to zabbix
